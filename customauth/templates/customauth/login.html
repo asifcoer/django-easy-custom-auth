@@ -1,0 +1,33 @@
+{% extends 'customauth/base.html' %}
+
+{% block page_title %}Login{% endblock %}
+
+{% block form %}
+<form action="" method="post">{% csrf_token %}
+  <input type="text" id="login" class="fadeIn second" name="username" placeholder="login">
+  {% if form.username.errors %}
+  <ul class="error-list">
+    {% for err in form.username.errors %}
+    <li>{{err}}</li>
+    {% endfor %}  
+  </ul>
+  {% endif %}
+  <input type="password" id="password" name="password" class="fadeIn third" name="login" placeholder="password">
+  {% if form.password.errors %}
+  <ul class="error-list">
+    {% for err in form.password.errors %}
+    <li>{{err}}</li>
+    {% endfor %}  
+  </ul>
+  {% endif %}
+  <input type="submit" class="fadeIn fourth" value="Log In">
+</form>
+{% endblock %}
+
+{% block footer %}
+<div id="formFooter">
+  <a class="underlineHover" href="{% url 'customauth:password_reset' %}">Forgot Password?</a>
+  <br>
+  New User ? <a class="underlineHover" href="{% url 'customauth:signup' %}">Create Account</a>
+</div>
+{% endblock %}

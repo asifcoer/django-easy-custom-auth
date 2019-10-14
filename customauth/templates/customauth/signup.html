@@ -1,0 +1,40 @@
+      {% extends 'customauth/base.html' %}
+      
+      {% block page_title %}Create Account{% endblock %}
+      
+
+      {% block form %}
+      <form action="" method="post">{% csrf_token %}
+        <input type="text" id="id_username" class="fadeIn second" name="username" placeholder="username">
+        {% if form.username.errors %}
+        <ul class="error-list">
+          {% for err in form.username.errors %}
+          <li>{{err}}</li>
+          {% endfor %}  
+        </ul>
+        {% endif %}
+        <input type="password" id="id_password1" class="fadeIn second" name="password1" placeholder="Password">
+        {% if form.password1.errors %}
+        <ul class="error-list">
+          {% for err in form.password1.errors %}
+          <li>{{err}}</li>
+          {% endfor %}  
+        </ul>
+        {% endif %}
+        <input type="password" id="id_password2" class="fadeIn second" name="password2" placeholder="Confirm Password">
+        {% if form.password2.errors %}
+        <ul class="error-list">
+          {% for err in form.password2.errors %}
+          <li>{{err}}</li>
+          {% endfor %}  
+        </ul>
+        {% endif %}
+        <input type="submit" class="fadeIn fourth" value="Signup">
+      </form>
+      {% endblock %}
+      {% block footer %}
+      <div id="formFooter">
+        Already Registered ? <a class="underlineHover" href="{% url 'customauth:login' %}">Login</a>
+      </div>
+      {% endblock %}
+    

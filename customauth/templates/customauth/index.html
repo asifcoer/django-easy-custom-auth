@@ -1,0 +1,15 @@
+{% extends 'customauth/base.html' %}
+
+{% block page_title %}Hello World{% endblock %}
+
+
+{% block form %}
+  
+<p>Hello {% firstof user.username 'World' %}</p>
+{% endblock %}
+
+{% block footer %}
+<a href="{% url 'customauth:logout' %}">Logout</a>
+<br>
+<a href="{% url 'customauth:change_password' %}">Change Password</a>
+{% endblock %}
